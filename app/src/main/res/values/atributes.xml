@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="OneTwoViewCustom">
+        <attr name="showText" format="boolean" />
+        <attr name="padding" format="dimension"/>
+        <attr name="labelPosition" format="enum">
+            <enum name="ONE" value="0"/>
+            <enum name="TWO" value="1"/>
+        </attr>
+    </declare-styleable>
+</resources>
