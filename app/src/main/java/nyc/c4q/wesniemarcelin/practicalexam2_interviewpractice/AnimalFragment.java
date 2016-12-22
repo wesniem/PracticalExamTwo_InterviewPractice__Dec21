@@ -34,10 +34,11 @@ public class AnimalFragment extends Fragment {
     RecyclerView animalRecyclerView;
     List<Animal> animalList;
     Context context;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View mroot = inflater.inflate(R.layout.fragment_layout,container,false);
+        View mroot = inflater.inflate(R.layout.fragment_layout, container, false);
         animalRecyclerView = (RecyclerView) mroot.findViewById(R.id.recycler_view_animals);
         fetchAnimals();
         return mroot;
@@ -52,7 +53,7 @@ public class AnimalFragment extends Fragment {
 
         //Service Call
         AnimalService service = retrofit.create(AnimalService.class);
-        Call<AnimalResponse>call = service.getAnimales();
+        Call<AnimalResponse> call = service.getAnimales();
 
         call.enqueue(new Callback<AnimalResponse>() {
             @Override
@@ -61,7 +62,7 @@ public class AnimalFragment extends Fragment {
                     if (response.isSuccessful()) {
                         Log.d(TAG, "SUCCESS!" + response.body().toString());
 
-
+                        //Tasks to be completed on success
                         AnimalResponse animalResponse = response.body();
                         animalList = animalResponse.getAnimals();
 
@@ -85,7 +86,7 @@ public class AnimalFragment extends Fragment {
 
             @Override
             public void onFailure(Call<AnimalResponse> call, Throwable t) {
-            Log.d(TAG, "Failure"+ t.getMessage());
+                Log.d(TAG, "Failure" + t.getMessage());
             }
         });
     }
